@@ -11,6 +11,8 @@ export type FAQ = {
 export type CTA = {
   label: string;
   href: string;
+  /** Optional routing note — informational only, not rendered in the CTA button */
+  note?: string;
 };
 
 export type SiteConfig = {
@@ -22,6 +24,8 @@ export type SiteConfig = {
   brandLine: string;
   /** Primary intent paragraph (one sentence) */
   primaryIntent: string;
+  /** Single anchor keyword for Home page narrative (optional; falls back to mainKeywords[0]) */
+  primaryAnchorKeyword?: string;
   /** Main keywords (exactly 2) */
   mainKeywords: [string, string];
   /** Supporting / mid-tail keywords */
@@ -124,10 +128,12 @@ export const SITE_PRESETS: Record<string, SiteConfig> = {
   // ── 2 ──────────────────────────────────────────────────────
   "malaysia-japan-bridge": {
     domain: "malaysia-japan-bridge.neoidigital.com",
-    siteName: "Malaysia–Japan Bridge",
-    brandLine: "Connecting Malaysian exporters to Japan's B2B market.",
+    siteName: "NeoiDigital",
+    brandLine: "Malaysia–Japan Bridge",
     primaryIntent:
-      "We act as the operational bridge between Malaysian companies and their Japan distributor or buyer relationships.",
+      "A Malaysia–Japan business bridge for exporters: entry planning, partner outreach, and Japan-side follow-up.",
+    // Home copy emphasises this anchor keyword; mainKeywords[1] provides SEO coverage only
+    primaryAnchorKeyword: "malaysia japan business bridge",
     mainKeywords: [
       "malaysia japan business bridge",
       "malaysia to japan market entry",
@@ -148,46 +154,63 @@ export const SITE_PRESETS: Record<string, SiteConfig> = {
       "malaysia japan business culture and trust building",
     ],
     primaryCTA: {
-      label: "Enquire About the Bridge Service",
-      href: "mailto:hello@neoidigital.com?subject=Malaysia-Japan Bridge Inquiry",
+      label: "Request a qualification call",
+      href: "https://www.japan-market.neoidigital.com/",
+      note: "You will be routed to the hub intake.",
     },
     hubLink: HUB_LINK,
     company: "NeoiDigital",
     localPresence: true,
     socialProofBullets: [
-      "Dedicated Malaysia–Japan trade corridor focus",
-      "Halal product export experience to Japanese retailers",
-      "Japan-side relationship management support",
-      "FTA framework guidance for qualifying exporters",
-      "Bilingual documentation and proposal preparation",
+      "Bridge model: Malaysia-side context + Japan-side execution discipline.",
+      "Partner outreach: category-fit distributors and trading companies, not generic lists.",
+      "Compliance-first framing: labeling and buyer expectations checked before meetings.",
+      "Trade-show optionality: FOODEX / Gift Show workflows when exhibitions are relevant.",
+      "Osaka-based follow-up: continuity after introductions to reduce drop-off.",
     ],
     faq: [
       {
-        question: "What makes the Malaysia–Japan trade corridor different from other markets?",
+        question: "What does a Malaysia–Japan business bridge actually do?",
         answer:
-          "Japan's B2B market operates on long-term trust relationships, category specialisation, and formal introduction protocols. Malaysian exporters need local coordination to navigate this effectively.",
+          "A Malaysia–Japan business bridge translates your export intent into Japan-side action: identifying the right distributor or buyer category, making structured introductions, and maintaining follow-up cadence so conversations do not stall after first contact.",
       },
       {
-        question: "Can you help with halal certification acceptance in Japan?",
+        question: "Is Japan market entry different for Malaysian SMEs vs large brands?",
         answer:
-          "We can guide on which Japanese halal certification bodies distributors typically recognise and help you prepare the documentation requirements.",
+          "Yes. Established brands often enter through major distributors or retailers directly. SMEs typically need a longer qualification period, a category-fit introduction channel, and Japan-side coordination to sustain momentum across time zones and language gaps.",
       },
       {
-        question: "How does the Malaysia–Japan FTA affect export costs?",
+        question: "How do you approach halal export to Japan from Malaysia?",
         answer:
-          "The Malaysia–Japan EPA provides preferential tariff rates for qualifying goods. We help identify whether your product category qualifies and how to apply the framework.",
+          "Halal export to Japan from Malaysia requires checking which halal certification bodies your target buyers recognise, preparing compliant documentation early, and selecting distributors with halal product handling experience. Not all Japanese distributors are set up for halal categories.",
       },
       {
-        question: "Do I need a Japanese company to import my products?",
+        question: "Do Malaysia–Japan FTA frameworks change the entry approach?",
         answer:
-          "Yes, Japanese customs requires a licensed importer of record. We help identify suitable importer partners as part of distributor identification.",
+          "The Malaysia–Japan EPA can reduce import tariffs for qualifying goods, which improves pricing competitiveness. However, FTA benefits only matter if you already have a willing buyer or distributor. Entry approach and channel selection come before tariff optimisation.",
       },
       {
-        question: "What languages are your services conducted in?",
+        question: "How do you find the right Japan-side distributor or trading company?",
         answer:
-          "We operate in English, Malay, and Japanese, covering both the Malaysia-side planning and Japan-side communication.",
+          "We start with category fit—not all distributors handle all product types. We then screen for channel coverage, financial stability, and willingness to work with new overseas suppliers. Introductions are made only after pre-qualification.",
+      },
+      {
+        question: "What is the typical timeline from first outreach to first deals?",
+        answer:
+          "A realistic timeline is 6–12 months from first distributor outreach to a first commercial agreement. Japan's B2B process involves multiple review stages, internal approvals, and sample evaluations. Expecting faster timelines typically leads to pressure that damages trust.",
+      },
+      {
+        question: "How do you handle Malaysia–Japan business culture and trust building?",
+        answer:
+          "Malaysia–Japan business culture and trust building requires consistent follow-through, structured communication, and patience with decision cycles. We manage response cadence, meeting documentation, and relationship check-ins on the Japan side so the Malaysian team does not lose momentum.",
+      },
+      {
+        question: "What should we prepare before the qualification call?",
+        answer:
+          "Prepare a product overview (category, pricing, certifications), your target channel (retail, food service, B2B wholesale), any existing Japan contacts or inquiries, and a clear sense of your export readiness timeline. The call is more useful the more specific you can be.",
       },
     ],
+    noindex: false,
   },
 
   // ── 3 ──────────────────────────────────────────────────────
@@ -537,5 +560,5 @@ export const SITE_PRESETS: Record<string, SiteConfig> = {
 // ============================================================
 // ACTIVE SITE — change only this line per sub-site repo
 // ============================================================
-export const ACTIVE_SITE_KEY = "export-to-japan";
+export const ACTIVE_SITE_KEY = "malaysia-japan-bridge";
 export const siteConfig: SiteConfig = SITE_PRESETS[ACTIVE_SITE_KEY];
