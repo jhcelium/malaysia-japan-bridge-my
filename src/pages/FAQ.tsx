@@ -24,7 +24,7 @@ export default function FAQ() {
           <h1 className="text-3xl font-semibold text-neutral-900 leading-tight mb-4">
             Frequently Asked Questions
           </h1>
-          <p className="text-base text-neutral-600 leading-relaxed">
+          <p className="text-base text-neutral-600 leading-relaxed lead-paragraph">
             Questions about how the Malaysia–Japan business bridge works, who it
             is for, and what to expect from the process.
           </p>

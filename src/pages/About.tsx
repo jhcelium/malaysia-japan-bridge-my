@@ -2,7 +2,28 @@ import { Link } from "react-router-dom";
 import SEOHead from "../components/SEOHead";
 import CTA from "../components/CTA";
 import { siteConfig } from "../content/site.config";
-import { pageTitle } from "../lib/seo";
+import { pageTitle, definedTermSetJsonLd } from "../lib/seo";
+
+const ABOUT_TERMS_JSONLD = definedTermSetJsonLd(
+  "Bridge Model Operations",
+  [
+    {
+      term: "Business Bridge",
+      description:
+        "An operational function on the Japan side that translates a Malaysian exporter's offer into structured introductions, follow-up cadence, and relationship continuity with Japanese distributors.",
+    },
+    {
+      term: "Follow-up Cadence",
+      description:
+        "A scheduled post-meeting contact programme maintained by a Japan-based coordinator—response management, next-step documentation, and proactive relationship upkeep.",
+    },
+    {
+      term: "Entry Framing",
+      description:
+        "The scoping stage that sets offer positioning, target channel, and compliance constraints before Japan-side partner outreach begins.",
+    },
+  ],
+);
 
 const DELIVERABLES = [
   {
@@ -49,7 +70,7 @@ export default function About() {
 
   return (
     <>
-      <SEOHead path="/about" title={title} description={description} />
+      <SEOHead path="/about" title={title} description={description} extraJsonLd={[ABOUT_TERMS_JSONLD]} />
 
       <main className="max-w-5xl mx-auto px-6 py-16 space-y-16">
 
@@ -61,7 +82,7 @@ export default function About() {
           <h1 className="text-3xl font-semibold text-neutral-900 leading-tight mb-4">
             How the Malaysia–Japan Business Bridge Works
           </h1>
-          <p className="text-base text-neutral-600 leading-relaxed">
+          <p className="text-base text-neutral-600 leading-relaxed lead-paragraph">
             {siteConfig.primaryIntent}
           </p>
         </section>

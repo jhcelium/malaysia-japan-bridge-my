@@ -1,30 +1,61 @@
 import { siteConfig } from "../content/site.config";
 
-/** Build canonical URL for a given path */
+const BASE_URL = `https://${siteConfig.domain}`;
+const DATE_PUBLISHED = "2026-03-02";
+const DATE_MODIFIED = "2026-03-16";
+
+/** Build canonical URL — trailing slash on root only */
 export function canonicalUrl(path: string): string {
-  const domain = siteConfig.domain;
-  const cleanPath = path.startsWith("/") ? path : `/${path}`;
-  return `https://${domain}${cleanPath}`;
+  const clean = path.startsWith("/") ? path : `/${path}`;
+  if (clean === "/") return `${BASE_URL}/`;
+  return `${BASE_URL}${clean.replace(/\/+$/, "")}`;
 }
 
-/** Build full page title.
- *  Home (no subtitle): "<brandLine> | <siteName>"
- *  Inner pages:        "<subtitle> | <siteName>"
- */
+/** Build full page title */
 export function pageTitle(subtitle?: string): string {
   if (!subtitle) return `${siteConfig.brandLine} | ${siteConfig.siteName}`;
   return `${subtitle} | ${siteConfig.siteName}`;
 }
 
-/** JSON-LD: Organization */
+// ── Shared sub-schemas ──────────────────────────────────────
+
+function speakable(cssSelectors: string[] = ["h1", ".lead-paragraph"]) {
+  return {
+    "@type": "SpeakableSpecification",
+    cssSelector: cssSelectors,
+  };
+}
+
+function publisherRef() {
+  return {
+    "@type": "Organization",
+    name: siteConfig.company,
+    url: BASE_URL,
+  };
+}
+
+// ── JSON-LD: Organization (GEO 13) ─────────────────────────
+
 export function orgJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: siteConfig.company,
-    url: `https://${siteConfig.domain}`,
+    url: BASE_URL,
     description: siteConfig.primaryIntent,
-    knowsAbout: siteConfig.mainKeywords,
+    inLanguage: "en-MY",
+    knowsAbout: [
+      ...siteConfig.mainKeywords,
+      ...siteConfig.supportingKeywords,
+      "Malaysia–Japan bilateral trade",
+      "Japan B2B distribution",
+      "MJEPA tariff frameworks",
+      "halal export compliance",
+    ],
+    areaServed: [
+      { "@type": "Country", name: "Malaysia" },
+      { "@type": "Country", name: "Japan" },
+    ],
     ...(siteConfig.localPresence && {
       address: {
         "@type": "PostalAddress",
@@ -36,14 +67,24 @@ export function orgJsonLd() {
   };
 }
 
-/** JSON-LD: WebSite */
+// ── JSON-LD: WebSite (GEO 14 + AEO 7) ─────────────────────
+
 export function webSiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: `${siteConfig.brandLine} | ${siteConfig.siteName}`,
-    url: `https://${siteConfig.domain}`,
+    url: BASE_URL,
     description: siteConfig.primaryIntent,
+    inLanguage: "en-MY",
+    publisher: publisherRef(),
+    about: {
+      "@type": "Thing",
+      name: "Malaysia–Japan Business Bridge",
+      description:
+        "Cross-border trade coordination connecting Malaysian exporters with Japan-side distributors, compliance framing, and follow-up systems.",
+    },
+    speakable: speakable(),
     keywords: [
       ...siteConfig.mainKeywords,
       ...siteConfig.supportingKeywords,
@@ -51,7 +92,8 @@ export function webSiteJsonLd() {
   };
 }
 
-/** JSON-LD: WebPage */
+// ── JSON-LD: WebPage (AEO 7) ───────────────────────────────
+
 export function webPageJsonLd(path: string, name: string, description: string) {
   return {
     "@context": "https://schema.org",
@@ -59,14 +101,20 @@ export function webPageJsonLd(path: string, name: string, description: string) {
     name,
     description,
     url: canonicalUrl(path),
+    inLanguage: "en-MY",
+    datePublished: DATE_PUBLISHED,
+    dateModified: DATE_MODIFIED,
+    publisher: publisherRef(),
     isPartOf: {
       "@type": "WebSite",
-      url: `https://${siteConfig.domain}`,
+      url: BASE_URL,
     },
+    speakable: speakable(),
   };
 }
 
-/** JSON-LD: FAQPage */
+// ── JSON-LD: FAQPage (AEO 7+8) ─────────────────────────────
+
 export function faqPageJsonLd() {
   return {
     "@context": "https://schema.org",
@@ -78,6 +126,46 @@ export function faqPageJsonLd() {
         "@type": "Answer",
         text: item.answer,
       },
+    })),
+    speakable: speakable(["h1", "dt", "dd"]),
+  };
+}
+
+// ── JSON-LD: HowTo (AEO 10) ────────────────────────────────
+
+export function howToJsonLd(
+  name: string,
+  description: string,
+  steps: { title: string; body: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+    description,
+    step: steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.title,
+      text: s.body,
+    })),
+  };
+}
+
+// ── JSON-LD: DefinedTermSet (AEO 9) ────────────────────────
+
+export function definedTermSetJsonLd(
+  name: string,
+  terms: { term: string; description: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    name,
+    hasDefinedTerm: terms.map((t) => ({
+      "@type": "DefinedTerm",
+      name: t.term,
+      description: t.description,
     })),
   };
 }
