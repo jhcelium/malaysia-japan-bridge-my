@@ -172,42 +172,42 @@ export const SITE_PRESETS: Record<string, SiteConfig> = {
       {
         question: "What does a Malaysia–Japan business bridge actually do?",
         answer:
-          "A Malaysia–Japan business bridge translates your export intent into Japan-side action: identifying the right distributor or buyer category, making structured introductions, and maintaining follow-up cadence so conversations do not stall after first contact.",
+          "A Malaysia–Japan business bridge translates export intent into Japan-side execution. In practice: identifying the right distributor or buyer category for your product, preparing introduction materials, making qualified introductions, and maintaining follow-up cadence so conversations do not stall after first contact. The bridge handles the Japan side so the Malaysian exporter does not need to manage across time zones, language barriers, and relationship protocols simultaneously.",
       },
       {
         question: "Is Japan market entry different for Malaysian SMEs vs large brands?",
         answer:
-          "Yes. Established brands often enter through major distributors or retailers directly. SMEs typically need a longer qualification period, a category-fit introduction channel, and Japan-side coordination to sustain momentum across time zones and language gaps.",
+          "Yes, meaningfully different. Large brands with established international presence often enter Japan through major distributors or retail buyers who approach them. Malaysian SMEs typically start with no Japan-side recognition, which means the entry process requires active outreach, a longer qualification period, and Japan-side coordination to sustain momentum. The SME bridge model prioritises category-fit introductions and relationship continuity over volume outreach.",
       },
       {
         question: "How do you approach halal export to Japan from Malaysia?",
         answer:
-          "Halal export to Japan from Malaysia requires checking which halal certification bodies your target buyers recognise, preparing compliant documentation early, and selecting distributors with halal product handling experience. Not all Japanese distributors are set up for halal categories.",
+          "Halal export to Japan from Malaysia starts with understanding which halal certification bodies the target buyers actually recognise—not all Malaysian certifications are accepted by all Japanese distributors. Documentation, ingredient claims, and product positioning must be reviewed and aligned before introductions are made. Partner selection also differs: not all F&B distributors in Japan have the operational setup or buyer relationships for halal categories. We address these specifics during the entry framing stage, not after introductions have begun.",
       },
       {
         question: "Do Malaysia–Japan FTA frameworks change the entry approach?",
         answer:
-          "The Malaysia–Japan EPA can reduce import tariffs for qualifying goods, which improves pricing competitiveness. However, FTA benefits only matter if you already have a willing buyer or distributor. Entry approach and channel selection come before tariff optimisation.",
+          "The Malaysia–Japan Economic Partnership Agreement (MJEPA) provides preferential tariff rates for qualifying goods with Malaysian origin, which can improve pricing competitiveness. However, FTA frameworks do not create distributor interest or replace compliance readiness—they reduce friction for exporters who already have channel fit in place. Confirming category eligibility, preparing the Certificate of Origin (Form MJEPA via MITI), and understanding rules of origin requirements are practical steps once a buyer or distributor relationship is being formalised.",
       },
       {
         question: "How do you find the right Japan-side distributor or trading company?",
         answer:
-          "We start with category fit—not all distributors handle all product types. We then screen for channel coverage, financial stability, and willingness to work with new overseas suppliers. Introductions are made only after pre-qualification.",
+          "Distributor identification starts with category fit: the right distributor handles products like yours and sells through the channel you are targeting. We then screen for geographic coverage, financial stability, and willingness to engage with new overseas suppliers. Only pre-qualified candidates receive an introduction. We do not send generic lists—each shortlist is built for the specific product and channel scope confirmed during entry framing.",
       },
       {
         question: "What is the typical timeline from first outreach to first deals?",
         answer:
-          "A realistic timeline is 6–12 months from first distributor outreach to a first commercial agreement. Japan's B2B process involves multiple review stages, internal approvals, and sample evaluations. Expecting faster timelines typically leads to pressure that damages trust.",
+          "A realistic timeline from first distributor outreach to a signed commercial agreement is 6–12 months. Japan's B2B process includes multiple internal review stages, sample evaluation, pricing discussions, and approval cycles that cannot be compressed significantly without damaging the relationship. Exporters who arrive with unrealistic timeline expectations typically introduce pressure that signals inexperience to Japan-side partners. We set timeline expectations clearly at the start.",
       },
       {
         question: "How do you handle Malaysia–Japan business culture and trust building?",
         answer:
-          "Malaysia–Japan business culture and trust building requires consistent follow-through, structured communication, and patience with decision cycles. We manage response cadence, meeting documentation, and relationship check-ins on the Japan side so the Malaysian team does not lose momentum.",
+          "Malaysia–Japan business culture and trust building depends on consistency, not intensity. The key variables are response cadence (delayed replies signal low priority), meeting preparation (arriving with a brief and clear asks is expected), written follow-up after each interaction, and same-contact continuity across the relationship. We manage these on the Japan side: after each distributor interaction we document the outcome, prepare the next step, and maintain the contact schedule so the Malaysian team does not need to prompt each action.",
       },
       {
         question: "What should we prepare before the qualification call?",
         answer:
-          "Prepare a product overview (category, pricing, certifications), your target channel (retail, food service, B2B wholesale), any existing Japan contacts or inquiries, and a clear sense of your export readiness timeline. The call is more useful the more specific you can be.",
+          "The qualification call is more productive with four things ready: a product overview (category, pricing range, current certifications), your target channel (retail, food service, B2B wholesale, or export via trading company), any existing Japan contacts or inquiries you have already received, and a realistic sense of your export readiness timeline. The call is not a pitch—it is a mutual assessment of fit. The more specific your inputs, the more direct our feedback on whether and how to proceed.",
       },
     ],
     noindex: false,

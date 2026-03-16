@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import SEOHead from "../components/SEOHead";
 import CTA from "../components/CTA";
@@ -79,7 +80,8 @@ const HOME_FAQ_PREVIEW = [
 
 export default function Home() {
   const title = pageTitle();
-  const description = `${siteConfig.brandLine} — ${siteConfig.primaryIntent}`;
+  const description =
+    "NeoiDigital provides a Malaysia–Japan business bridge for Malaysian exporters: entry planning, partner outreach, and Osaka-based follow-up. Malaysia to Japan market entry support without building a local team.";
 
   return (
     <>
@@ -126,11 +128,11 @@ export default function Home() {
           </h2>
           <ul className="space-y-3 text-sm text-neutral-700 leading-relaxed">
             {[
-              "A bridge translates your export intent into Japan-side execution—distributor identification, introduction structure, and follow-up discipline.",
-              "It reduces drop-off after first contact, which is where most Malaysia–Japan business conversations stall.",
-              "It aligns compliance requirements, channel selection, and relationship cadence before outreach begins.",
-              "It is not a sales agency or a trade directory—it is operational coordination on the Japan side.",
-              "The bridge model assumes the Malaysian side knows its product; the Japan side needs structure to receive it.",
+              "The malaysia japan business bridge for exporters is an operational layer: distributor identification, introduction structure, and follow-up discipline managed from the Japan side.",
+              "It reduces the drop-off that follows first contact—where most Malaysia–Japan business conversations stall before reaching a commercial discussion.",
+              "It aligns compliance requirements, channel selection, and relationship cadence before outreach begins, not after.",
+              "It is not a sales agency or a trade directory. It is coordination discipline applied to a specific trade corridor.",
+              "The bridge model assumes the Malaysian side knows its product. The japan side needs structure to receive, evaluate, and advance it.",
             ].map((item) => (
               <li key={item} className="flex items-start gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 bg-neutral-900" />
@@ -142,9 +144,12 @@ export default function Home() {
 
         {/* C — When This Model Fits */}
         <section className="border-t border-neutral-200 pt-10">
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 mb-6">
+          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 mb-3">
             When This Model Fits
           </h2>
+          <p className="text-sm text-neutral-500 mb-5">
+            This is a malaysia to japan market entry service for exporters who already have a product ready and need Japan-side execution—not feasibility research.
+          </p>
           <ul className="space-y-3 text-sm text-neutral-700 leading-relaxed">
             {[
               "You have product interest from Japan but no confirmed distribution path.",
@@ -189,15 +194,17 @@ export default function Home() {
             Halal Products: Practical Path to Japan
           </h2>
           <p className="text-sm text-neutral-600 leading-relaxed max-w-3xl">
-            Japan does not have a single national halal standard. Buyer
-            expectations and labelling realities vary by channel—convenience
-            retail, supermarket, food service, and specialty importers each have
-            different requirements. For halal export to japan from malaysia,
-            documentation and product claims must be reviewed before distributor
-            meetings, not after. The halal certification bodies that Japanese
-            distributors recognise differ from those common in Malaysia, so
-            early verification avoids late-stage setbacks. Partner selection for
-            halal products also differs from general food and beverage: not all
+            Japan market entry for malaysian halal products requires preparation
+            beyond obtaining a certification. Japan does not have a single
+            national halal standard, and buyer expectations vary by
+            channel—convenience retail, supermarket, food service, and specialty
+            importers each recognise different bodies and apply different
+            standards. For halal export to japan from malaysia, documentation
+            and product claims must be reviewed before distributor meetings, not
+            after. The halal certification bodies that Japanese distributors
+            recognise differ from those common in Malaysia, so early
+            verification avoids late-stage setbacks. Partner selection for halal
+            products also differs from general food and beverage: not all
             F&amp;B distributors have the operational setup to handle halal
             category requirements. Positioning the halal credentials
             correctly—what is certified, what is not, and what a Japanese buyer
@@ -322,6 +329,19 @@ export default function Home() {
               </div>
             )}
           </div>
+        </section>
+
+        {/* Internal navigation — About */}
+        <section className="border-t border-neutral-200 pt-6">
+          <p className="text-sm text-neutral-500 mb-2">
+            For the operational case behind the bridge model:
+          </p>
+          <Link
+            to="/about"
+            className="text-sm text-neutral-700 font-medium underline underline-offset-2 hover:text-neutral-900"
+          >
+            How the Malaysia–Japan Business Bridge Works →
+          </Link>
         </section>
 
         {/* I — Coverage Map */}

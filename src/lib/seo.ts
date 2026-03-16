@@ -7,9 +7,12 @@ export function canonicalUrl(path: string): string {
   return `https://${domain}${cleanPath}`;
 }
 
-/** Build full page title */
+/** Build full page title.
+ *  Home (no subtitle): "<brandLine> | <siteName>"
+ *  Inner pages:        "<subtitle> | <siteName>"
+ */
 export function pageTitle(subtitle?: string): string {
-  if (!subtitle) return siteConfig.siteName;
+  if (!subtitle) return `${siteConfig.brandLine} | ${siteConfig.siteName}`;
   return `${subtitle} | ${siteConfig.siteName}`;
 }
 
@@ -21,6 +24,7 @@ export function orgJsonLd() {
     name: siteConfig.company,
     url: `https://${siteConfig.domain}`,
     description: siteConfig.primaryIntent,
+    knowsAbout: siteConfig.mainKeywords,
     ...(siteConfig.localPresence && {
       address: {
         "@type": "PostalAddress",
@@ -37,9 +41,13 @@ export function webSiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: siteConfig.siteName,
+    name: `${siteConfig.brandLine} | ${siteConfig.siteName}`,
     url: `https://${siteConfig.domain}`,
-    description: siteConfig.brandLine,
+    description: siteConfig.primaryIntent,
+    keywords: [
+      ...siteConfig.mainKeywords,
+      ...siteConfig.supportingKeywords,
+    ].join(", "),
   };
 }
 

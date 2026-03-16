@@ -38,7 +38,10 @@ export default function SEOHead({ path, title, description, isFaq = false }: Pro
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />
       <meta property="og:type" content="website" />
+      <meta property="og:locale" content="en_US" />
       <meta property="og:image" content={`https://${siteConfig.domain}/og.png`} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content={siteConfig.siteName} />
 
       {/* Twitter Card */}
