@@ -4,38 +4,7 @@ import SEOHead from "../components/SEOHead";
 import CTA from "../components/CTA";
 import KeywordBlock from "../components/KeywordBlock";
 import { siteConfig } from "../content/site.config";
-import { pageTitle } from "../lib/seo";
-
-const HOME_FAQ_JSONLD = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What does a Malaysia–Japan business bridge actually do?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A Malaysia–Japan business bridge translates your export intent into Japan-side action: identifying the right distributor or buyer category, making structured introductions, and maintaining follow-up cadence so conversations do not stall after first contact.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How do you approach halal export to Japan from Malaysia?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Halal export to Japan from Malaysia requires checking which halal certification bodies your target buyers recognise, preparing compliant documentation early, and selecting distributors with halal product handling experience. Not all Japanese distributors are set up for halal categories.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How do you find the right Japan-side distributor or trading company?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We start with category fit—not all distributors handle all product types. We then screen for channel coverage, financial stability, and willingness to work with new overseas suppliers. Introductions are made only after pre-qualification.",
-      },
-    },
-  ],
-};
+import { pageTitle, howToJsonLd, definedTermSetJsonLd } from "../lib/seo";
 
 const HOW_WE_WORK = [
   {
@@ -60,23 +29,59 @@ const HOW_WE_WORK = [
   },
 ];
 
-const HOME_FAQ_PREVIEW = [
-  {
-    question: "What does a Malaysia–Japan business bridge actually do?",
-    answer:
-      "A Malaysia–Japan business bridge translates your export intent into Japan-side action: identifying the right distributor or buyer category, making structured introductions, and maintaining follow-up cadence so conversations do not stall after first contact.",
-  },
-  {
-    question: "How do you approach halal export to Japan from Malaysia?",
-    answer:
-      "Halal export to Japan from Malaysia requires checking which halal certification bodies your target buyers recognise, preparing compliant documentation early, and selecting distributors with halal product handling experience. Not all Japanese distributors are set up for halal categories.",
-  },
-  {
-    question: "How do you find the right Japan-side distributor or trading company?",
-    answer:
-      "We start with category fit—not all distributors handle all product types. We then screen for channel coverage, financial stability, and willingness to work with new overseas suppliers. Introductions are made only after pre-qualification.",
-  },
-];
+const HOME_FAQ_PREVIEW = siteConfig.faq.filter((_item, i) =>
+  [0, 2, 4].includes(i),
+);
+
+const HOME_FAQ_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HOME_FAQ_PREVIEW.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+const HOW_TO_JSONLD = howToJsonLd(
+  "Malaysia–Japan Business Bridge: How We Work",
+  "Four-step process for Malaysian exporters entering Japan through the bridge model.",
+  HOW_WE_WORK.map((s) => ({ title: s.title, body: s.body })),
+);
+
+const DEFINED_TERMS_JSONLD = definedTermSetJsonLd(
+  "Malaysia–Japan Bridge Terminology",
+  [
+    {
+      term: "Malaysia–Japan Business Bridge",
+      description:
+        "An operational coordination layer that translates Malaysian export intent into Japan-side execution—distributor identification, structured introductions, and follow-up cadence management.",
+    },
+    {
+      term: "Entry Framing",
+      description:
+        "The initial scoping phase that clarifies product positioning, target channel, and key constraints before any Japan-side outreach begins.",
+    },
+    {
+      term: "Partner Mapping",
+      description:
+        "The process of identifying specific distributor and trading company categories that match the exporter's product type and target channel in Japan.",
+    },
+    {
+      term: "Follow-up Cadence",
+      description:
+        "A structured schedule of post-meeting contact maintained by the Japan-side coordinator to prevent relationship drop-off between the Malaysian exporter and Japanese distributors.",
+    },
+    {
+      term: "MJEPA (Malaysia–Japan Economic Partnership Agreement)",
+      description:
+        "A bilateral trade framework providing preferential tariff rates for qualifying Malaysian goods exported to Japan. Requires Certificate of Origin (Form MJEPA) issued by MITI.",
+    },
+  ],
+);
 
 export default function Home() {
   const title = pageTitle();
@@ -85,7 +90,12 @@ export default function Home() {
 
   return (
     <>
-      <SEOHead path="/" title={title} description={description} />
+      <SEOHead
+        path="/"
+        title={title}
+        description={description}
+        extraJsonLd={[HOW_TO_JSONLD, DEFINED_TERMS_JSONLD]}
+      />
 
       <Helmet>
         <script type="application/ld+json">
@@ -103,7 +113,7 @@ export default function Home() {
           <h1 className="text-3xl font-semibold text-neutral-900 leading-tight mb-4">
             Malaysia–Japan Business Bridge
           </h1>
-          <p className="text-sm text-neutral-600 leading-relaxed mb-8">
+          <p className="text-sm text-neutral-600 leading-relaxed mb-8 lead-paragraph">
             NeoiDigital provides a malaysia japan business bridge for exporters
             who need Japan-side structure, partner outreach, and
             follow-up—without building a local team.
@@ -132,7 +142,7 @@ export default function Home() {
               "It reduces the drop-off that follows first contact—where most Malaysia–Japan business conversations stall before reaching a commercial discussion.",
               "It aligns compliance requirements, channel selection, and relationship cadence before outreach begins, not after.",
               "It is not a sales agency or a trade directory. It is coordination discipline applied to a specific trade corridor.",
-              "The bridge model assumes the Malaysian side knows its product. The japan side needs structure to receive, evaluate, and advance it.",
+              "The bridge model assumes the Malaysian side knows its product. The Japan side needs structure to receive, evaluate, and advance it.",
             ].map((item) => (
               <li key={item} className="flex items-start gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 bg-neutral-900" />
@@ -258,6 +268,29 @@ export default function Home() {
           </ul>
         </section>
 
+        {/* GEO 11 — Regulatory Authority Context */}
+        <section className="border-t border-neutral-200 pt-10">
+          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 mb-4">
+            Regulatory Framework: MITI and Japan Customs
+          </h2>
+          <p className="text-sm text-neutral-600 leading-relaxed max-w-3xl">
+            Malaysia–Japan trade is governed by regulatory oversight on both
+            sides. In Malaysia, the Ministry of International Trade and Industry
+            (MITI) oversees export licensing, issues Certificates of Origin
+            under the MJEPA framework, and administers trade facilitation
+            programmes for qualifying exporters. On the Japan side, Japan
+            Customs and Tariff Bureau enforces import classification, tariff
+            application, and documentation compliance at the border. For food
+            products, the Ministry of Health, Labour and Welfare (MHLW)
+            regulates food safety standards, labelling requirements under the
+            Food Labelling Standards Act, and import notification
+            procedures. Understanding which authority applies to your product
+            category—and what documentation each requires—is a prerequisite for
+            any serious distributor conversation. We verify regulatory alignment
+            during the entry framing stage.
+          </p>
+        </section>
+
         {/* H — Deliverables */}
         <section className="border-t border-neutral-200 pt-10">
           <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 mb-6">
@@ -365,12 +398,12 @@ export default function Home() {
             ))}
           </dl>
           <div className="mt-6">
-            <a
-              href="/faq"
+            <Link
+              to="/faq"
               className="text-sm text-neutral-700 font-medium underline underline-offset-2 hover:text-neutral-900"
             >
               View all questions →
-            </a>
+            </Link>
           </div>
         </section>
 

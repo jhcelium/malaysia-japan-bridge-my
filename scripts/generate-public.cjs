@@ -49,30 +49,28 @@ const noindex = noindexMatch ? noindexMatch[1] === "true" : false;
 const today = new Date().toISOString().split("T")[0];
 const baseUrl = "https://" + domain;
 
-const sitemap = [
+var pages = [
+  { path: "/",      changefreq: "weekly",  priority: "1.0" },
+  { path: "/about", changefreq: "monthly", priority: "0.8" },
+  { path: "/faq",   changefreq: "monthly", priority: "0.8" },
+];
+
+var sitemapLines = [
   '<?xml version="1.0" encoding="UTF-8"?>',
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-  "  <url>",
-  "    <loc>" + baseUrl + "/</loc>",
-  "    <lastmod>" + today + "</lastmod>",
-  "    <changefreq>weekly</changefreq>",
-  "    <priority>1.0</priority>",
-  "  </url>",
-  "  <url>",
-  "    <loc>" + baseUrl + "/about</loc>",
-  "    <lastmod>" + today + "</lastmod>",
-  "    <changefreq>monthly</changefreq>",
-  "    <priority>0.8</priority>",
-  "  </url>",
-  "  <url>",
-  "    <loc>" + baseUrl + "/faq</loc>",
-  "    <lastmod>" + today + "</lastmod>",
-  "    <changefreq>monthly</changefreq>",
-  "    <priority>0.8</priority>",
-  "  </url>",
-  "</urlset>",
-  "",
-].join("\n");
+];
+pages.forEach(function (p) {
+  var loc = p.path === "/" ? baseUrl + "/" : baseUrl + p.path;
+  sitemapLines.push("  <url>");
+  sitemapLines.push("    <loc>" + loc + "</loc>");
+  sitemapLines.push("    <lastmod>" + today + "</lastmod>");
+  sitemapLines.push("    <changefreq>" + p.changefreq + "</changefreq>");
+  sitemapLines.push("    <priority>" + p.priority + "</priority>");
+  sitemapLines.push("  </url>");
+});
+sitemapLines.push("</urlset>");
+sitemapLines.push("");
+var sitemap = sitemapLines.join("\n");
 
 // ── Build robots.txt ─────────────────────────────────────────
 const robots = noindex
