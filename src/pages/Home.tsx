@@ -129,6 +129,17 @@ export default function Home() {
               Japan Market Hub →
             </a>
           </div>
+          <p className="mt-6 text-sm text-neutral-600 leading-relaxed max-w-2xl border-l-2 border-neutral-900 pl-4">
+            <Link
+              to="/faq"
+              className="font-semibold text-neutral-900 underline underline-offset-2 hover:text-neutral-600"
+            >
+              Malaysia–Japan Bridge FAQ
+            </Link>
+            {" "}
+            — distributor fit, halal and MJEPA context, timelines, bilateral
+            trust building, and what to prepare before a qualification call.
+          </p>
         </section>
 
         {/* B — What a Malaysia–Japan Business Bridge Means */}
@@ -382,9 +393,19 @@ export default function Home() {
 
         {/* J — FAQ Preview + link to /faq */}
         <section className="border-t border-neutral-200 pt-10">
-          <h2 className="text-xs font-semibold tracking-widest text-neutral-400 uppercase mb-6">
-            Common Questions
+          <h2 className="text-xl font-semibold text-neutral-900 mb-2">
+            Bridge questions (preview)
           </h2>
+          <p className="text-sm text-neutral-500 mb-6">
+            Short excerpts below.{" "}
+            <Link
+              to="/faq"
+              className="text-neutral-800 font-medium underline underline-offset-2 hover:text-neutral-600"
+            >
+              Open the full FAQ index
+            </Link>{" "}
+            for every question and deep-dive answer pages.
+          </p>
           <dl className="divide-y divide-neutral-200">
             {HOME_FAQ_PREVIEW.map((item) => (
               <div key={item.question} className="py-6">

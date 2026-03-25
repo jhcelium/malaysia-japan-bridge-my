@@ -52,8 +52,28 @@ const baseUrl = "https://" + domain;
 var pages = [
   { path: "/",      changefreq: "weekly",  priority: "1.0" },
   { path: "/about", changefreq: "monthly", priority: "0.8" },
-  { path: "/faq",   changefreq: "monthly", priority: "0.8" },
+  { path: "/faq",   changefreq: "monthly", priority: "0.9" },
 ];
+
+// FAQ answer assets (malaysia-japan-bridge site)
+var faqAssetsPath = path.join(__dirname, "..", "src", "content", "faq.assets.ts");
+if (fs.existsSync(faqAssetsPath)) {
+  var faqSrc = fs.readFileSync(faqAssetsPath, "utf8");
+  var slugRe = /slug:\s*"([a-z0-9-]+)"/g;
+  var seen = {};
+  var match;
+  while ((match = slugRe.exec(faqSrc)) !== null) {
+    var s = match[1];
+    if (!seen[s]) {
+      seen[s] = true;
+      pages.push({
+        path: "/faq/" + s,
+        changefreq: "monthly",
+        priority: "0.75",
+      });
+    }
+  }
+}
 
 var sitemapLines = [
   '<?xml version="1.0" encoding="UTF-8"?>',
