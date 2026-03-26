@@ -6,13 +6,17 @@ import {
   webSiteJsonLd,
   webPageJsonLd,
   faqPageJsonLd,
+  singleFaqPageJsonLd,
 } from "../lib/seo";
 
 type Props = {
   path: string;
   title: string;
   description: string;
+  /** Full FAQ index: all Q&A from site config */
   isFaq?: boolean;
+  /** Single Q&A FAQPage for /faq/:slug answer pages */
+  singleFaq?: { question: string; answer: string };
   extraJsonLd?: Record<string, unknown>[];
 };
 
@@ -21,17 +25,24 @@ export default function SEOHead({
   title,
   description,
   isFaq = false,
+  singleFaq,
   extraJsonLd = [],
 }: Props) {
   const canonical = canonicalUrl(path);
   const robotsContent = siteConfig.noindex ? "noindex,nofollow" : "index,follow";
   const ogImage = `https://${siteConfig.domain}/og.png`;
 
+  const faqLd = singleFaq
+    ? [singleFaqPageJsonLd(singleFaq.question, singleFaq.answer)]
+    : isFaq
+      ? [faqPageJsonLd()]
+      : [];
+
   const jsonLdScripts = [
     orgJsonLd(),
     webSiteJsonLd(),
     webPageJsonLd(path, title, description),
-    ...(isFaq ? [faqPageJsonLd()] : []),
+    ...faqLd,
     ...extraJsonLd,
   ];
 

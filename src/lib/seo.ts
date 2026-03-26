@@ -131,6 +131,25 @@ export function faqPageJsonLd() {
   };
 }
 
+/** Single-question FAQPage for /faq/:slug answer assets */
+export function singleFaqPageJsonLd(question: string, answerText: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: answerText,
+        },
+      },
+    ],
+    speakable: speakable(["h1", ".faq-direct-answer"]),
+  };
+}
+
 // ── JSON-LD: HowTo (AEO 10) ────────────────────────────────
 
 export function howToJsonLd(

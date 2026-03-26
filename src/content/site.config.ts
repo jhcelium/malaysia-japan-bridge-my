@@ -170,6 +170,11 @@ export const SITE_PRESETS: Record<string, SiteConfig> = {
     ],
     faq: [
       {
+        question: "Why Do Malaysian Companies Need Japan Market Entry Support?",
+        answer:
+          "Malaysian companies need Japan market entry support because Japan B2B buying is process- and relationship-heavy: generic export readiness alone rarely converts first interest into a distribution path. Effective support combines Japan-side channel context, importer and compliance reality, and disciplined follow-up after introductions—especially when the Malaysian team cannot sustain daily Japan-side cadence remotely.",
+      },
+      {
         question: "What does a Malaysia–Japan business bridge actually do?",
         answer:
           "A Malaysia–Japan business bridge translates export intent into Japan-side execution. In practice: identifying the right distributor or buyer category for your product, preparing introduction materials, making qualified introductions, and maintaining follow-up cadence so conversations do not stall after first contact. The bridge handles the Japan side so the Malaysian exporter does not need to manage across time zones, language barriers, and relationship protocols simultaneously.",
