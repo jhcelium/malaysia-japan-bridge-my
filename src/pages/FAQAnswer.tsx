@@ -39,14 +39,27 @@ export default function FAQAnswer() {
       />
 
       <main className="max-w-3xl mx-auto px-6 py-16 space-y-12">
-        <nav className="text-xs text-neutral-500 space-x-3">
+        <nav className="text-xs text-neutral-500 flex flex-wrap gap-x-3 gap-y-1">
           <Link to="/" className="underline underline-offset-2 hover:text-neutral-900">
             Home
           </Link>
-          <span aria-hidden>·</span>
+          <span aria-hidden className="hidden sm:inline">
+            ·
+          </span>
           <Link to="/faq" className="underline underline-offset-2 hover:text-neutral-900">
             Bridge FAQ
           </Link>
+          <span aria-hidden className="hidden sm:inline">
+            ·
+          </span>
+          <a
+            href={siteConfig.hubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-neutral-900"
+          >
+            Japan Market Hub →
+          </a>
         </nav>
 
         <article>
