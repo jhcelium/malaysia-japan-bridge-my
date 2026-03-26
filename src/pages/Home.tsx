@@ -30,7 +30,7 @@ const HOW_WE_WORK = [
 ];
 
 const HOME_FAQ_PREVIEW = siteConfig.faq.filter((_item, i) =>
-  [0, 2, 4].includes(i),
+  [1, 3, 5].includes(i),
 );
 
 const HOME_FAQ_JSONLD = {

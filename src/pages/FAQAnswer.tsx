@@ -121,19 +121,29 @@ export default function FAQAnswer() {
             <CTA />
           </section>
 
-          <section className="border-t border-neutral-200 pt-10 flex flex-col sm:flex-row sm:items-center gap-4 text-sm">
-            <Link
-              to="/faq"
-              className="text-neutral-700 font-medium underline underline-offset-2 hover:text-neutral-900"
-            >
-              ← All bridge questions
-            </Link>
-            <Link
-              to="/"
-              className="text-neutral-500 underline underline-offset-2 hover:text-neutral-900"
-            >
-              Malaysia–Japan Bridge — Home
-            </Link>
+          <section className="border-t border-neutral-200 pt-10 flex flex-col gap-3 text-sm">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 sm:gap-4">
+              <Link
+                to="/faq"
+                className="text-neutral-700 font-medium underline underline-offset-2 hover:text-neutral-900"
+              >
+                ← All bridge questions
+              </Link>
+              <Link
+                to="/"
+                className="text-neutral-500 underline underline-offset-2 hover:text-neutral-900"
+              >
+                Malaysia–Japan Bridge — Home
+              </Link>
+              <a
+                href={siteConfig.hubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-500 underline underline-offset-2 hover:text-neutral-900"
+              >
+                Japan Market Hub →
+              </a>
+            </div>
           </section>
         </article>
       </main>

@@ -18,6 +18,33 @@ export type FaqAsset = {
 
 export const FAQ_ASSETS: FaqAsset[] = [
   {
+    slug: "why-do-malaysian-companies-need-japan-market-entry-support",
+    question: "Why Do Malaysian Companies Need Japan Market Entry Support?",
+    preview:
+      "General export advice rarely closes the Japan gap: you need channel context, importer reality, and disciplined follow-up from inside the market.",
+    directAnswer:
+      "Malaysian companies need Japan market entry support because Japan is a relationship- and process-heavy B2B market where generic export readiness—pricing lists, brochures, and remote email—is usually not enough to move a distributor from interest to a commercial path. Support that combines local context with execution discipline is what turns first contact into sustained progress.",
+    whyMatters:
+      "Without Japan-side context, Malaysian exporters misread buyer signals, slow responses, and internal approval cycles. Without execution discipline, promising introductions go cold after one meeting. Market entry support for this corridor is not about motivation slides; it is about aligning your offer with how Japanese distributors actually buy, import, and onboard suppliers.",
+    keyFactors: [
+      "General export support often stops at documentation and logistics templates. Japan entry also requires channel mapping, buyer-language briefing, and post-meeting cadence that remote teams struggle to sustain.",
+      "Japan expects predictable communication, prepared meetings, and written follow-through. Local context means knowing which distributor categories handle your product and what compliance questions appear before listing discussions.",
+      "Execution discipline covers outreach sequencing, sample handling, pricing passes, and importer-of-record reality—work that is hard to run cleanly from Malaysia alone across time zones.",
+      "Bridge-style support matters for Malaysian companies because it keeps Malaysia-side product truth and Japan-side relationship mechanics in one coordinated thread, reducing the drop-off that follows first introductions.",
+    ],
+    commonMistakes: [
+      "Treating Japan like a faster ASEAN retail market and compressing timelines.",
+      "Relying on a one-off trade mission or exhibition contact as a substitute for a distribution strategy.",
+      "Assuming English email alone replaces a Japan-side point of contact for follow-up and clarification.",
+      "Underestimating labelling, certification, and category-specific buyer checks until late in the conversation.",
+    ],
+    relatedSlugs: [
+      "what-does-malaysia-japan-business-bridge-do",
+      "japan-market-entry-malaysian-smes-vs-large-brands",
+      "malaysia-japan-culture-trust-building",
+    ],
+  },
+  {
     slug: "what-does-malaysia-japan-business-bridge-do",
     question: "What does a Malaysia–Japan business bridge actually do?",
     preview:
